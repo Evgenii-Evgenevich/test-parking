@@ -1,8 +1,8 @@
 import java.util.Objects;
 
 public class Car {
-    private String id;
-    private boolean firma;
+    private final String id;
+    private final boolean firma;
 
     public Car(String id, boolean firma) {
         this.id = id;
@@ -28,5 +28,13 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id='" + id + '\'' +
+                ", firma=" + firma +
+                '}';
     }
 }

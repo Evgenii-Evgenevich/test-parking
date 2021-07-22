@@ -10,12 +10,12 @@ public class Main {
         ParkingService parkingService = new ParkingService();
 
         parkingService.parkingInfoMap.put("", new LinkedList<>(Arrays.asList(
-                new ParkingInfo("", LocalDate.now().plusDays(1).atStartOfDay().minusHours(30 + new Random().nextInt(16)), LocalDate.now().plusDays(1).atStartOfDay().minusHours(25 + new Random().nextInt(5))),
-                new ParkingInfo("", LocalDate.now().plusDays(1).atStartOfDay().minusHours(30 + new Random().nextInt(16)), LocalDate.now().plusDays(1).atStartOfDay().minusHours(25 + new Random().nextInt(5))),
-                new ParkingInfo("", LocalDate.now().plusDays(1).atStartOfDay().minusHours(30 + new Random().nextInt(16)), LocalDate.now().plusDays(1).atStartOfDay().minusHours(25 + new Random().nextInt(5))),
-                new ParkingInfo("", LocalDate.now().plusDays(1).atStartOfDay().minusHours(30 + new Random().nextInt(16)), LocalDate.now().plusDays(1).atStartOfDay().minusHours(25 + new Random().nextInt(5))),
-                new ParkingInfo("", LocalDate.now().plusDays(1).atStartOfDay().minusHours(30 + new Random().nextInt(16)), LocalDate.now().plusDays(1).atStartOfDay().minusHours(25 + new Random().nextInt(5))),
-                new ParkingInfo("", LocalDate.now().plusDays(1).atStartOfDay().minusHours(30 + new Random().nextInt(16)), LocalDate.now().plusDays(1).atStartOfDay().minusHours(25 + new Random().nextInt(5)))
+                new ParkingInfo(LocalDate.now().plusDays(1).atStartOfDay().minusHours(30 + new Random().nextInt(16)), LocalDate.now().plusDays(1).atStartOfDay().minusHours(25 + new Random().nextInt(5))),
+                new ParkingInfo(LocalDate.now().plusDays(1).atStartOfDay().minusHours(30 + new Random().nextInt(16)), LocalDate.now().plusDays(1).atStartOfDay().minusHours(25 + new Random().nextInt(5))),
+                new ParkingInfo(LocalDate.now().plusDays(1).atStartOfDay().minusHours(30 + new Random().nextInt(16)), LocalDate.now().plusDays(1).atStartOfDay().minusHours(25 + new Random().nextInt(5))),
+                new ParkingInfo(LocalDate.now().plusDays(1).atStartOfDay().minusHours(30 + new Random().nextInt(16)), LocalDate.now().plusDays(1).atStartOfDay().minusHours(25 + new Random().nextInt(5))),
+                new ParkingInfo(LocalDate.now().plusDays(1).atStartOfDay().minusHours(30 + new Random().nextInt(16)), LocalDate.now().plusDays(1).atStartOfDay().minusHours(25 + new Random().nextInt(5))),
+                new ParkingInfo(LocalDate.now().plusDays(1).atStartOfDay().minusHours(30 + new Random().nextInt(16)), LocalDate.now().plusDays(1).atStartOfDay().minusHours(25 + new Random().nextInt(5)))
         )));
 
         Assert.assertEquals(parkingService.carsCount(), 0);
@@ -28,7 +28,7 @@ public class Main {
 
         Assert.assertEquals(parkingService.countByFirma(), 0);
 
-        parkingService.into(ourCar);
+        parkingService.into(new Car(ourCar.getId(), ourCar.isFirma()));
 
         Assert.assertEquals(parkingService.carsCount(), 1);
 

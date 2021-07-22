@@ -19,7 +19,7 @@ public class ParkingService {
     public void into(Car car) {
         if (cars.add(car)) {
             LinkedList<ParkingInfo> parkingInfo = parkingInfoMap.computeIfAbsent(car.getId(), k -> new LinkedList<>());
-            parkingInfo.addFirst(new ParkingInfo(car.getId(), LocalDateTime.now()));
+            parkingInfo.addFirst(new ParkingInfo(LocalDateTime.now()));
         }
     }
 
@@ -34,7 +34,7 @@ public class ParkingService {
     public long countByDate(LocalDate date) {
         return parkingInfoMap.values().stream()
                 .flatMap(LinkedList::stream)
-                .filter(x -> x.getInto().isAfter(date.atStartOfDay()))
+                .filter(x -> x.getInto().compareTo(date.atStartOfDay()) >= 0)
                 .filter(x -> x.getOut().isBefore(date.plusDays(1).atStartOfDay()))
                 .count();
     }
